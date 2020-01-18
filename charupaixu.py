@@ -14,8 +14,6 @@ def insert_sort(data):
 
 
 
-insert_sort[data]
+insert_sort(data)
 
 print(data)
-
-
