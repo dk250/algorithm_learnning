@@ -1,5 +1,5 @@
 
-data = [2, 3, 1, 5, 7, 0]
+data = [2, 3, 1, 5, 7, 0, 7]
 
 def order(data, start, end):
 	mark_value = data[start]
@@ -11,25 +11,23 @@ def order(data, start, end):
 		else:
 			hight_array.append(value)
 
-	for index in range(0, len(low_array)):
-		data[start + index] = low_array[index]
+	if len(low_array) > 0:
+		for index in range(0, len(low_array)):
+			data[start + index] = low_array[index]
 
-	data[len(low_array)] = mark_value
+		data[len(low_array) + start] = mark_value
 
-	for index in range(0, len(hight_array)):
-		data[len(low_array) + 1 + index] = hight_array[index]
+		for index in range(0, len(hight_array)):
+			data[len(low_array) + 1 + index] = hight_array[index]
 
-	print(len(low_array))
-	print(data)
-
-	return len(low_array)
+	return len(low_array) + start
+	
 	
 def kuaisupaixu(data, start, end):
 	if start >= end:
 		return
 	
 	middleIndex = order(data, start, end)
-	# print(data)
 	kuaisupaixu(data, start, middleIndex - 1)
 	kuaisupaixu(data, middleIndex + 1, end)
 
@@ -43,6 +41,6 @@ print(data)
 
 # test = [1, 2, 3]
 
-# for index in test[1:2]:
+# for index in test[1:3]:
 # 	print(index)
 
